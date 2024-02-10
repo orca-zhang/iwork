@@ -36,8 +36,8 @@ package TSCH
 
 import proto "github.com/golang/protobuf/proto"
 import math "math"
-import "github.com/dunhamsteve/iwork/proto/TSP"
-import "github.com/dunhamsteve/iwork/proto/TSD"
+import "github.com/orcastor/iwork-converter//proto/TSP"
+import "github.com/orcastor/iwork-converter//proto/TSD"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

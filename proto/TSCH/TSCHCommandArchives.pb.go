@@ -43,9 +43,9 @@ package TSCH
 
 import proto "github.com/golang/protobuf/proto"
 import math "math"
-import "github.com/dunhamsteve/iwork/proto/TSP"
-import "github.com/dunhamsteve/iwork/proto/TSK"
-import "github.com/dunhamsteve/iwork/proto/TSS"
+import "github.com/orcastor/iwork-converter//proto/TSP"
+import "github.com/orcastor/iwork-converter//proto/TSK"
+import "github.com/orcastor/iwork-converter//proto/TSS"
 
 // discarding unused import TSD "TSDArchives.pb"
 

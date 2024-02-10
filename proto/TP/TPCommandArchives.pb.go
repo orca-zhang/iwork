@@ -49,10 +49,10 @@ package TP
 
 import proto "github.com/golang/protobuf/proto"
 import math "math"
-import "github.com/dunhamsteve/iwork/proto/TSD"
-import "github.com/dunhamsteve/iwork/proto/TSK"
-import "github.com/dunhamsteve/iwork/proto/TSP"
-import "github.com/dunhamsteve/iwork/proto/TSWP"
+import "github.com/orcastor/iwork-converter//proto/TSD"
+import "github.com/orcastor/iwork-converter//proto/TSK"
+import "github.com/orcastor/iwork-converter//proto/TSP"
+import "github.com/orcastor/iwork-converter//proto/TSWP"
 
 // discarding unused import TSS "TSSArchives.pb"
 // discarding unused import TSA "TSAArchives.pb"

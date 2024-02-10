@@ -1,8 +1,8 @@
 package index
 
 import (
-	"github.com/dunhamsteve/iwork/proto/TN"
-	"github.com/dunhamsteve/iwork/proto/TSWP"
+	"github.com/orcastor/iwork-converter//proto/TN"
+	"github.com/orcastor/iwork-converter//proto/TSWP"
 	"github.com/golang/protobuf/proto"
 )
 

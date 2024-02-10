@@ -10,7 +10,7 @@ It is very much a work in progress, but hopefully someone finds it useful.
 Download and build
 
 ```bash
-go get https://github.com/dunhamsteve/iwork/iwork2html
+go get https://github.com/orcastor/iwork-converter//iwork2html
 ```
 
 # Usage

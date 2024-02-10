@@ -71,12 +71,12 @@ package TST
 import (
 	math "math"
 
-	"github.com/dunhamsteve/iwork/proto/TSCE"
-	"github.com/dunhamsteve/iwork/proto/TSD"
-	"github.com/dunhamsteve/iwork/proto/TSK"
-	"github.com/dunhamsteve/iwork/proto/TSP"
-	"github.com/dunhamsteve/iwork/proto/TSS"
-	"github.com/dunhamsteve/iwork/proto/TSWP"
+	"github.com/orcastor/iwork-converter//proto/TSCE"
+	"github.com/orcastor/iwork-converter//proto/TSD"
+	"github.com/orcastor/iwork-converter//proto/TSK"
+	"github.com/orcastor/iwork-converter//proto/TSP"
+	"github.com/orcastor/iwork-converter//proto/TSS"
+	"github.com/orcastor/iwork-converter//proto/TSWP"
 	proto "github.com/golang/protobuf/proto"
 )
 

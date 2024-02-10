@@ -61,10 +61,10 @@ package KN
 import (
 	math "math"
 
-	"github.com/dunhamsteve/iwork/proto/TSD"
-	"github.com/dunhamsteve/iwork/proto/TSK"
-	"github.com/dunhamsteve/iwork/proto/TSP"
-	"github.com/dunhamsteve/iwork/proto/TSS"
+	"github.com/orcastor/iwork-converter//proto/TSD"
+	"github.com/orcastor/iwork-converter//proto/TSK"
+	"github.com/orcastor/iwork-converter//proto/TSP"
+	"github.com/orcastor/iwork-converter//proto/TSS"
 	proto "github.com/golang/protobuf/proto"
 )
 

@@ -40,10 +40,10 @@ package TN
 import (
 	math "math"
 
-	"github.com/dunhamsteve/iwork/proto/TSCE"
-	"github.com/dunhamsteve/iwork/proto/TSCH"
-	"github.com/dunhamsteve/iwork/proto/TSK"
-	"github.com/dunhamsteve/iwork/proto/TSP"
+	"github.com/orcastor/iwork-converter//proto/TSCE"
+	"github.com/orcastor/iwork-converter//proto/TSCH"
+	"github.com/orcastor/iwork-converter//proto/TSK"
+	"github.com/orcastor/iwork-converter//proto/TSP"
 	proto "github.com/golang/protobuf/proto"
 )
 
