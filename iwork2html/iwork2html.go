@@ -1,4 +1,4 @@
-package main
+package iwork2html
 
 import (
 	"archive/zip"
@@ -403,22 +403,6 @@ func (ctx *Context) storageToNode(bs *TSWP.StorageArchive, body *html.Node) erro
 }
 
 type Style map[string]interface{}
-
-func main() {
-	if len(os.Args) < 3 {
-		fmt.Printf(`Converts pages files to html
-
-Usage:
-    %s infile.pages outfile.html
-
-`, os.Args[0])
-		return
-	}
-
-	if err := Convert(os.Args[1], os.Args[2]); err != nil {
-		panic(err)
-	}
-}
 
 func Convert(in, out string) error {
 	fmt.Println("Processing", in)
