@@ -1,4 +1,4 @@
-module github.com/orcastor/iwork-converter/
+module github.com/orcastor/iwork-converter
 
 go 1.21.5
 
