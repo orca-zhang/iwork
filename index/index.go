@@ -14,7 +14,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/orcastor/iwork-converter//proto/TSP"
+	"github.com/orcastor/iwork-converter/proto/TSP"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/snappy"

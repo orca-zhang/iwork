@@ -52,12 +52,12 @@ package KN
 import (
 	math "math"
 
-	"github.com/orcastor/iwork-converter//proto/TSA"
-	"github.com/orcastor/iwork-converter//proto/TSCH"
-	"github.com/orcastor/iwork-converter//proto/TSD"
-	"github.com/orcastor/iwork-converter//proto/TSP"
-	"github.com/orcastor/iwork-converter//proto/TSS"
-	"github.com/orcastor/iwork-converter//proto/TSWP"
+	"github.com/orcastor/iwork-converter/proto/TSA"
+	"github.com/orcastor/iwork-converter/proto/TSCH"
+	"github.com/orcastor/iwork-converter/proto/TSD"
+	"github.com/orcastor/iwork-converter/proto/TSP"
+	"github.com/orcastor/iwork-converter/proto/TSS"
+	"github.com/orcastor/iwork-converter/proto/TSWP"
 	proto "github.com/golang/protobuf/proto"
 )
 

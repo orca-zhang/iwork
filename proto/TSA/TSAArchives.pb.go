@@ -18,9 +18,9 @@ package TSA
 
 import proto "github.com/golang/protobuf/proto"
 import math "math"
-import "github.com/orcastor/iwork-converter//proto/TSK"
-import "github.com/orcastor/iwork-converter//proto/TSP"
-import "github.com/orcastor/iwork-converter//proto/TSWP"
+import "github.com/orcastor/iwork-converter/proto/TSK"
+import "github.com/orcastor/iwork-converter/proto/TSP"
+import "github.com/orcastor/iwork-converter/proto/TSWP"
 
 // discarding unused import TSS "TSSArchives.pb"
 

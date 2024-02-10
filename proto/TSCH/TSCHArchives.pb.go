@@ -30,10 +30,10 @@ package TSCH
 
 import proto "github.com/golang/protobuf/proto"
 import math "math"
-import "github.com/orcastor/iwork-converter//proto/TSP"
-import "github.com/orcastor/iwork-converter//proto/TSK"
-import "github.com/orcastor/iwork-converter//proto/TSD"
-import "github.com/orcastor/iwork-converter//proto/TSS"
+import "github.com/orcastor/iwork-converter/proto/TSP"
+import "github.com/orcastor/iwork-converter/proto/TSK"
+import "github.com/orcastor/iwork-converter/proto/TSD"
+import "github.com/orcastor/iwork-converter/proto/TSS"
 
 // discarding unused import TSCH_Generated "TSCHArchives.GEN.pb"
 // discarding unused import TSCH1 "TSCH3DArchives.pb"

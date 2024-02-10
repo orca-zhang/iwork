@@ -60,9 +60,9 @@ package TSD
 
 import proto "github.com/golang/protobuf/proto"
 import math "math"
-import "github.com/orcastor/iwork-converter//proto/TSP"
-import "github.com/orcastor/iwork-converter//proto/TSK"
-import "github.com/orcastor/iwork-converter//proto/TSS"
+import "github.com/orcastor/iwork-converter/proto/TSP"
+import "github.com/orcastor/iwork-converter/proto/TSK"
+import "github.com/orcastor/iwork-converter/proto/TSS"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

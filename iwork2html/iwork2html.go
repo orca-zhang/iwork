@@ -18,14 +18,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/orcastor/iwork-converter//index"
-	"github.com/orcastor/iwork-converter//proto/KN"
-	"github.com/orcastor/iwork-converter//proto/TN"
-	"github.com/orcastor/iwork-converter//proto/TP"
-	"github.com/orcastor/iwork-converter//proto/TSD"
-	"github.com/orcastor/iwork-converter//proto/TSP"
-	"github.com/orcastor/iwork-converter//proto/TST"
-	"github.com/orcastor/iwork-converter//proto/TSWP"
+	"github.com/orcastor/iwork-converter/index"
+	"github.com/orcastor/iwork-converter/proto/KN"
+	"github.com/orcastor/iwork-converter/proto/TN"
+	"github.com/orcastor/iwork-converter/proto/TP"
+	"github.com/orcastor/iwork-converter/proto/TSD"
+	"github.com/orcastor/iwork-converter/proto/TSP"
+	"github.com/orcastor/iwork-converter/proto/TST"
+	"github.com/orcastor/iwork-converter/proto/TSWP"
 
 	"golang.org/x/net/html"
 )

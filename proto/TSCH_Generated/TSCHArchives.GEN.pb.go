@@ -22,13 +22,13 @@ package TSCH_Generated
 
 import proto "github.com/golang/protobuf/proto"
 import math "math"
-import "github.com/orcastor/iwork-converter//proto/TSP"
-import "github.com/orcastor/iwork-converter//proto/TSK"
-import "github.com/orcastor/iwork-converter//proto/TSD"
+import "github.com/orcastor/iwork-converter/proto/TSP"
+import "github.com/orcastor/iwork-converter/proto/TSK"
+import "github.com/orcastor/iwork-converter/proto/TSD"
 
 // discarding unused import TSS "TSSArchives.pb"
-import "github.com/orcastor/iwork-converter//proto/TSCH1"
-import "github.com/orcastor/iwork-converter//proto/TSCH"
+import "github.com/orcastor/iwork-converter/proto/TSCH1"
+import "github.com/orcastor/iwork-converter/proto/TSCH"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

@@ -3,16 +3,16 @@ package index
 import (
 	"fmt"
 
-	"github.com/orcastor/iwork-converter//proto/TSA"
-	"github.com/orcastor/iwork-converter//proto/TSCE"
-	"github.com/orcastor/iwork-converter//proto/TSCH"
-	"github.com/orcastor/iwork-converter//proto/TSCH/PreUFF"
-	"github.com/orcastor/iwork-converter//proto/TSD"
-	"github.com/orcastor/iwork-converter//proto/TSK"
-	"github.com/orcastor/iwork-converter//proto/TSP"
-	"github.com/orcastor/iwork-converter//proto/TSS"
-	"github.com/orcastor/iwork-converter//proto/TST"
-	"github.com/orcastor/iwork-converter//proto/TSWP"
+	"github.com/orcastor/iwork-converter/proto/TSA"
+	"github.com/orcastor/iwork-converter/proto/TSCE"
+	"github.com/orcastor/iwork-converter/proto/TSCH"
+	"github.com/orcastor/iwork-converter/proto/TSCH/PreUFF"
+	"github.com/orcastor/iwork-converter/proto/TSD"
+	"github.com/orcastor/iwork-converter/proto/TSK"
+	"github.com/orcastor/iwork-converter/proto/TSP"
+	"github.com/orcastor/iwork-converter/proto/TSS"
+	"github.com/orcastor/iwork-converter/proto/TST"
+	"github.com/orcastor/iwork-converter/proto/TSWP"
 
 	"github.com/golang/protobuf/proto"
 )
