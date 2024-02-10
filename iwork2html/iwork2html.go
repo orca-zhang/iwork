@@ -523,7 +523,10 @@ func (ctx *Context) processNumbers() *html.Node {
 		doc.AppendChild(section)
 		for _, ref := range sheet.DrawableInfos {
 			// if this cast throws there are other kinds of drawables...
-			section.AppendChild(ctx.processDrawable(ref))
+			e := ctx.processDrawable(ref)
+			if e != nil {
+				section.AppendChild(e)
+			}
 		}
 	}
 
