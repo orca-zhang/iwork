@@ -1,4 +1,4 @@
-package iwork2html
+package iwork2text
 
 import (
 	"archive/zip"
@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"os"
 	"sort"
 	"time"
 
@@ -22,10 +23,8 @@ import (
 )
 
 type Context struct {
-	styles map[string]string
-	imgs   map[string]uint64
-	ix     *index.Index
-	zr     *zip.ReadCloser
+	ix *index.Index
+	zr *zip.ReadCloser
 }
 
 type Attachment struct {
@@ -42,7 +41,7 @@ func (ctx *Context) processImage(image *TSD.ImageArchive, ocr func(io.Reader) (s
 			if data.FileName != nil {
 				src = *data.FileName
 			} else {
-				fmt.Println("No filename: %#v\n", data)
+				fmt.Printf("No filename: %#v\n", data)
 				src = *data.PreferredFileName
 			}
 		}
@@ -159,7 +158,7 @@ func (ctx *Context) processTable(tm *TST.TableModelArchive, ocr func(io.Reader) 
 							rt := ctx.ix.Deref(entry.RichTextPayload).(*TST.RichTextPayloadArchive)
 							st := ctx.ix.Deref(rt.Storage).(*TSWP.StorageArchive)
 							if d, err := ctx.storageToNode(st, ocr); err == nil {
-								doc += d
+								doc += " " + d
 							}
 						}
 					}
@@ -188,7 +187,7 @@ func (ctx *Context) processDrawable(ref *TSP.Reference, ocr func(io.Reader) (str
 	case *TSWP.ShapeInfoArchive:
 		return ctx.processShapeInfo(item.(*TSWP.ShapeInfoArchive), ocr)
 	case *TSD.GroupArchive:
-		return ctx.processDrawableArchive(item.(*TSD.GroupArchive).Super)
+		return ctx.processDrawableArchive(item.(*TSD.GroupArchive).Super, ocr)
 	case *KN.PlaceholderArchive:
 		return ctx.processShapeInfo(item.(*KN.PlaceholderArchive).Super, ocr)
 	default:
@@ -204,10 +203,10 @@ func (ctx *Context) processShapeInfo(sia *TSWP.ShapeInfoArchive, ocr func(io.Rea
 			return doc
 		}
 	}
-	return ctx.processDrawableArchive(sia.Super.Super)
+	return ctx.processDrawableArchive(sia.Super.Super, ocr)
 }
 
-func (ctx *Context) processDrawableArchive(da *TSD.DrawableArchive) string {
+func (ctx *Context) processDrawableArchive(da *TSD.DrawableArchive, ocr func(io.Reader) (string, error)) string {
 	// do nothing...
 	return ""
 }
@@ -282,7 +281,7 @@ func (ctx *Context) storageToNode(bs *TSWP.StorageArchive, ocr func(io.Reader) (
 				}
 				if ce > end {
 					if e.Object != nil {
-						fmt.Println("ERR? ce > end", ce, end, e.Object)
+						// fmt.Println("ERR? ce > end", ce, end, e.Object)
 					}
 					ce = end
 				}
@@ -290,10 +289,7 @@ func (ctx *Context) storageToNode(bs *TSWP.StorageArchive, ocr func(io.Reader) (
 					doc += string(rr[pos:cs])
 					pos = cs
 				}
-				if e.Object != nil {
-				} else {
-					doc += string(rr[cs:ce])
-				}
+				doc += string(rr[cs:ce])
 				pos = ce
 			}
 		}
@@ -306,15 +302,14 @@ func (ctx *Context) storageToNode(bs *TSWP.StorageArchive, ocr func(io.Reader) (
 
 type Style map[string]interface{}
 
-func Convert(in, out string, ocr func(io.Reader) (string, error)) (string, error) {
+func ConvertString(in string, ocr func(io.Reader) (string, error)) (string, error) {
 	if ocr == nil {
 		ocr = func(r io.Reader) (string, error) { return "", nil }
 	}
+	fmt.Println("Processing", in)
 
 	var err error
 	var ctx Context
-	ctx.styles = make(map[string]string)
-	ctx.imgs = make(map[string]uint64)
 	if ctx.ix, err = index.Open(in); err != nil {
 		return "", err
 	}
@@ -322,6 +317,8 @@ func Convert(in, out string, ocr func(io.Reader) (string, error)) (string, error
 		return "", err
 	}
 	defer ctx.zr.Close()
+
+	fmt.Println("Read", len(ctx.ix.Records), "records")
 
 	var doc string
 	switch ctx.ix.Type {
@@ -334,6 +331,14 @@ func Convert(in, out string, ocr func(io.Reader) (string, error)) (string, error
 	}
 
 	return doc, nil
+}
+
+func Convert(in, out string) error {
+	doc, err := ConvertString(in, nil)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(out, []byte(doc), os.ModePerm)
 }
 
 // processPages translates a pages file.

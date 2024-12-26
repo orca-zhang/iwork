@@ -11,6 +11,7 @@ Download and build
 
 ```bash
 go get https://github.com/orcastor/iwork-converter/iwork2html
+go get https://github.com/orcastor/iwork-converter/iwork2text
 ```
 
 # Usage
@@ -24,7 +25,66 @@ export PATH=$PATH:$(go env GOPATH)/bin
 Run conventer
 
 ```bash
-./iwork2html infile.pages outfile.html
+./iwork-converter infile.pages outfile.html
+```
+
+# iwork2html
+
+Support convert to json / html format
+
+# iwork2text
+
+Support OCR function injection
+
+``` go
+func ConvertString(in string, ocr func(io.Reader) (string, error)) (string, error)
+```
+
+You can use [danlock/gogosseract](https://github.com/danlock/gogosseract) as backend.
+
+``` go
+var tess *gogosseract.Tesseract
+
+func InitTesseractOCR(model string) error {
+	trainingDataFile, err := os.Open(model)
+	if err != nil {
+		return err
+	}
+
+	ctx := context.TODO()
+	cfg := gogosseract.Config{
+		Language:     "eng",
+		TrainingData: trainingDataFile,
+	}
+	// While Tesseract's logs are very useful for debugging, you have the option to silence or redirect it
+	cfg.Stderr = io.Discard
+	cfg.Stdout = io.Discard
+	// Compile the Tesseract WASM and run it, loading in the TrainingData and setting any Config Variables provided
+	tess, err = gogosseract.New(ctx, cfg)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func OCR(reader io.Reader) (string, error) {
+	if tess == nil {
+		return "", fmt.Errorf("tesseract not initialized")
+	}
+
+	ctx := context.TODO()
+	err := tess.LoadImage(ctx, reader, gogosseract.LoadImageOptions{})
+	if err != nil {
+		return "", err
+	}
+
+	var text string
+	text, err = tess.GetText(ctx, nil)
+	if err != nil {
+		return "", err
+	}
+	return text, nil
+}
 ```
 
 ## Pages '13

@@ -80,7 +80,7 @@ func (ctx *Context) processImage(image *TSD.ImageArchive) *html.Node {
 			if data.FileName != nil {
 				src = *data.FileName
 			} else {
-				fmt.Println("No filename: %#v\n", data)
+				fmt.Printf("No filename: %#v\n", data)
 				src = *data.PreferredFileName
 			}
 		}
@@ -145,7 +145,6 @@ func (ctx *Context) processTable(tm *TST.TableModelArchive) *html.Node {
 				if rinfo.CellStorageBuffer[offset] == 4 {
 					cellType = int(rinfo.CellStorageBuffer[offset+1])
 				} else {
-					panic("not four")
 					cellType = int(rinfo.CellStorageBuffer[offset+2])
 				}
 
@@ -174,7 +173,7 @@ func (ctx *Context) processTable(tm *TST.TableModelArchive) *html.Node {
 					td.AppendChild(E("p", fmt.Sprint(tm)))
 				case 6: // boolean
 					value := math.Float64frombits(LE.Uint64(rinfo.CellStorageBuffer[o : o+8]))
-					var label = "???"
+					label := "???"
 					if value == 0 {
 						label = "FALSE"
 					} else if value == 0xf03f {
@@ -324,7 +323,7 @@ func (ctx *Context) storageToNode(bs *TSWP.StorageArchive, body *html.Node) erro
 				mergeParaProps(ref.ParaProperties, parent.ParaProperties)
 
 				if parent.Super.Parent != nil {
-					panic("Need recursion here")
+					// TODO: Need recursion here
 				}
 			}
 
@@ -372,7 +371,7 @@ func (ctx *Context) storageToNode(bs *TSWP.StorageArchive, body *html.Node) erro
 						parent := ix.Deref(ref.Super.Parent).(*TSWP.CharacterStyleArchive)
 						mergeCharProps(ref.CharProperties, parent.CharProperties)
 						if parent.Super.Parent != nil {
-							panic("Need recursion here")
+							// TODO: Need recursion here
 						}
 					}
 
@@ -610,7 +609,6 @@ func mergeCharProps(props *TSWP.CharacterStylePropertiesArchive, parent *TSWP.Ch
 
 // translateCharProps converts a TSWP.CharacterStylePropertiesArchive into CSS
 func translateCharProps(props *TSWP.CharacterStylePropertiesArchive) string {
-
 	rval := ""
 	if props.Bold != nil && *props.Bold {
 		rval += "  font-weight: bold;\n"
@@ -683,7 +681,7 @@ func writejson(foo interface{}, fn string) {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	ioutil.WriteFile(fn, a, 0644)
+	ioutil.WriteFile(fn, a, 0o644)
 }
 
 func dumpjson(foo interface{}) {
